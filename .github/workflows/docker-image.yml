@@ -46,7 +46,7 @@ jobs:
         name: Build and push with caddy_naive
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: naive
           file: ./build_image/naive/Dockerfile
           platforms: linux/amd64
           push: true
@@ -59,7 +59,7 @@ jobs:
         name: Build and push with x-ui
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: x-ui
           file: ./build_image/x-ui/Dockerfile
           platforms: linux/amd64
           push: true
