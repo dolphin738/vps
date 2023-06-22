@@ -6,7 +6,7 @@ on:
       - 'main'
 env:
   caddy_v: 2.6.4
-  x-ui_v: 0.3.4.3
+  xui_v: 0.3.4.3
 
 jobs:
   docker:
@@ -42,9 +42,8 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/caddy:$caddy_v
+            ${{ secrets.DOCKERHUB_USERNAME }}/caddy:${{ env.caddy_v }}
             ${{ secrets.DOCKERHUB_USERNAME }}/caddy
-               name: Build and push with caddy_naive
       -
         name: Build and push with x-ui
         uses: docker/build-push-action@v4
@@ -54,5 +53,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/x-ui:$x-ui_v
+            ${{ secrets.DOCKERHUB_USERNAME }}/x-ui:${{ env.xui_v }}
             ${{ secrets.DOCKERHUB_USERNAME }}/x-ui
