@@ -1,9 +1,12 @@
-name: ci
+name: builder vps_image
 
 on:
   push:
     branches:
       - 'main'
+env:
+  caddy_v: 2.6.4
+  x-ui_v: 0.3.4.3
 
 jobs:
   docker:
@@ -24,10 +27,32 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      #- 
+        #name: Lower case dockerhub image name
+        #id: dockerhub_image
+        #uses: ASzc/change-string-case-action@v5
+        #with:
+          #string: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PACKAGE_C }}
       -
-        name: Build and push
+        name: Build and push with caddy_naive
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: build_image
+          file: ./build_image/naive/Dockerfile
+          platforms: linux/amd64
           push: true
-          tags: user/app:latest
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/caddy:$caddy_v
+            ${{ secrets.DOCKERHUB_USERNAME }}/caddy
+               name: Build and push with caddy_naive
+      -
+        name: Build and push with x-ui
+        uses: docker/build-push-action@v4
+        with:
+          context: build_image
+          file: ./build_image/x-ui/Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/x-ui:$x-ui_v
+            ${{ secrets.DOCKERHUB_USERNAME }}/x-ui
