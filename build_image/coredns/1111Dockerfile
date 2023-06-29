@@ -4,8 +4,7 @@ RUN git clone ${XUI_REPO} --depth=1
 WORKDIR /go/coredns
 RUN echo "wgsd:github.com/jwhited/wgsd" >> plugin.cfg
 RUN go build 
-RUN chmod +x /go/coredns/coredns
-#-a -ldflags "-linkmode external -extldflags '-static' -s -w"
+RUN chmod +x /go/coredns/coredns -a -ldflags "-linkmode external -extldflags '-static' -s -w"
 
 FROM  alpine:latest
 LABEL org.opencontainers.image.authors="https://github.com/dolphin738"
