@@ -1,11 +1,10 @@
-name: builder x-ui_image
+name: builder wgsd_coredns_image
 
 on:
   workflow_dispatch:
   
 env:
-  #caddy_v: 2.6.4
-  xui_v: 0.3.4.3
+  wgsd_coredns_v: 0.3.5
 
 jobs:
   docker:
@@ -43,16 +42,16 @@ jobs:
         #with:
           #string: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PACKAGE_C }}
       -
-        name: Build and push with x-ui
+        name: Build and push with wgsd_coredns
         uses: docker/build-push-action@v4
         with:
-          context: build_image/x-ui
-          file: ./build_image/x-ui/Dockerfile
+          context: build_image/coredns
+          file: ./build_image/coredns/Dockerfile
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/x-ui:${{ env.xui_v }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/x-ui
+            ${{ secrets.DOCKERHUB_USERNAME }}/coredns:${{ env.wgsd_coredns_v }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/coredns
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
       #- 
