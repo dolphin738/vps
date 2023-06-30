@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.authors="https://github.com/Chasing66"
 COPY --from=builder /go/x-ui/x-ui /usr/local/bin/x-ui
 
 ENV TZ=Asia/Shanghai
-RUN apk add --no-cache ca-certificates tzdata
+RUN apk add --no-cache ca-certificates tzdata bash
 
 ARG TARGETARCH
 COPY --from=teddysun/xray /usr/bin/xray /usr/local/bin/bin/xray-linux-${TARGETARCH}
