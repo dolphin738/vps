@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  x-ui_alpine_v: 0.3.4.3
+  x-ui_alpine_v: 0.3.4.4
 
 jobs:
   docker:
