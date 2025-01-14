@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  caddy_v: 2.6.4
+  caddy_v: 2.9.1
   xui_v: 0.3.4.3
 
 jobs:
