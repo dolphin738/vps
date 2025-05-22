@@ -48,7 +48,7 @@ jobs:
         #with:
           #string: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PACKAGE_C }}
       - name: Get qbee version
-        uses: pozetroninc/github-action-get-latest-release@v1
+        uses: pozetroninc/github-action-get-latest-release@master
         id: release 
         with:
           repo: c0re100/qBittorrent-Enhanced-Edition
