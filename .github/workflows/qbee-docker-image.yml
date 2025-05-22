@@ -48,8 +48,8 @@ jobs:
         #with:
           #string: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PACKAGE_C }}
       - name: Get qbee version
+        id: qbee_version
         uses: pozetroninc/github-action-get-latest-release@master
-        id: release 
         with:
           repository: c0re100/qBittorrent-Enhanced-Edition
       -
@@ -61,7 +61,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee:${{ steps.release.outputs.tag  }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee:${{ steps.qbee_version.outputs.release  }}
             ${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
