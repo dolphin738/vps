@@ -82,7 +82,7 @@ RUN apk upgrade \
     && useradd qbittorrent -u ${PUID} -U -m -d ${QBT_PROFILE} -s /sbin/nologin \
     && sed -i 's/dl-cdn.alpinelinux.org/mirrors.bfsu.edu.cn/g' /etc/apk/repositories
 COPY --from=builder /out /
-COPY root /
+COPY /root /
 WORKDIR /data
 VOLUME ["/data"]
 ENTRYPOINT ["tini", "-g", "--", "entrypoint.sh"]
