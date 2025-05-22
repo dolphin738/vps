@@ -47,11 +47,14 @@ jobs:
         #uses: ASzc/change-string-case-action@v5
         #with:
           #string: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PACKAGE_C }}
-      - name: Get qbee version
+      - 
+        name: Get qbee version
         id: qbee_version
         uses: pozetroninc/github-action-get-latest-release@master
         with:
           repository: c0re100/qBittorrent-Enhanced-Edition
+      - 
+        run: echo "最新版本为 ${{ steps.qbee_version.outputs.release  }}"
       -
         name: Build and push with qbee
         uses: docker/build-push-action@v4
