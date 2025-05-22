@@ -3,9 +3,9 @@ name: builder caddy_image
 on:
   workflow_dispatch:
   
-env:
-  caddy_v: 2.9.1
-  xui_v: 0.3.4.3
+#env:
+  #caddy_v: 2.9.1
+  #xui_v: 0.3.4.3
 
 jobs:
   docker:
@@ -47,6 +47,11 @@ jobs:
         #uses: ASzc/change-string-case-action@v5
         #with:
           #string: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PACKAGE_C }}
+      - name: Get qbee version
+        uses: pozetroninc/github-action-get-latest-release@v1
+        id: release 
+        with:
+          repo: c0re100/qBittorrent-Enhanced-Edition
       -
         name: Build and push with qbee
         uses: docker/build-push-action@v4
@@ -56,7 +61,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee:${{ env.caddy_v }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee:${{ steps.release.outputs.tag  }}
             ${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
