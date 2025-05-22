@@ -51,7 +51,7 @@ jobs:
         uses: pozetroninc/github-action-get-latest-release@master
         id: release 
         with:
-          repo: c0re100/qBittorrent-Enhanced-Edition
+          repository: c0re100/qBittorrent-Enhanced-Edition
       -
         name: Build and push with qbee
         uses: docker/build-push-action@v4
