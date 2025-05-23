@@ -27,8 +27,8 @@ jobs:
         run: |
           mkdir -p etc/DDSRem
           cp -rf ./build_image/qbee/config.json  ./etc/DDSRem/config.json
-          cat ./etc/DDSRem/config.json | jq '.Dockerhub_Username = ${{ secrets.DOCKERHUB_USERNAME }}'
-          cat ./etc/DDSRem/config.json | jq '.Dockerhub_Password = ${{ secrets.DOCKERHUB_TOKEN }}'
+          cat ./etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
+          cat ./etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
         #jq ''.Dockerhub_Username' = ${{ secrets.DOCKERHUB_USERNAME }}' ./etc/DDSRem/config.json  > tmp1.json
           #mv tmp1.json  ./etc/DDSRem/config.json &&
           #jq '.Dockerhub_Password = ${{ secrets.DOCKERHUB_TOKEN }}' ./etc/DDSRem/config.json  > tmp2.json
