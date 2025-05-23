@@ -39,8 +39,8 @@ jobs:
       - 
         name: Copy files
         env:
-          USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          USERNAME: { secrets.DOCKERHUB_USERNAME }
+          TOKEN: { secrets.DOCKERHUB_TOKEN }
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  /etc/DDSRem/config.json &&
