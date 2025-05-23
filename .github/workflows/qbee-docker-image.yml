@@ -40,6 +40,7 @@ jobs:
         name: Copy files
         run: | 
           sudo mkdir -p /etc/DDSRem &&
+          cd /home/runner/work/vps/vps/build_image/qbee
           jq ".Dockerhub_Username = \"dolphin738\" | .Dockerhub_Password = \"${{ secrets.DOCKERHUB_TOKEN }}\"" config.json  > 1.json  && 
           mv 1.json  config.json
           sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  /etc/DDSRem/config.json &&
