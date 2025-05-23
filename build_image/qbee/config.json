@@ -1,5 +1,3 @@
 {
     "Github_Token": "{ secrets.GITHUB_TOKEN }",
-    "Dockerhub_Username": "",
-    "Dockerhub_Password": "",
 }
