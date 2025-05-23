@@ -41,11 +41,12 @@ jobs:
         run: |
           sudo mkdir -p /QBEE/etc/DDSRem
           sudo cp -rf ./build_image/qbee/config.json  /QBEE/etc/DDSRem/config.json
-          cat ./QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
-          cat ./QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
+          sudo cd /home/runner/work/vps/vps/QBEE
+          cat /etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
+          cat /etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
       -
         name: Execute SH
-        run: chmod +x ./QBEE/Build.sh  && ./QBEE/Build.sh
+        run: chmod +x ./Build.sh  && ./Build.sh
       #-
         #name: Login to Docker Hub
         #uses: docker/login-action@v2
