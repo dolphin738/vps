@@ -44,9 +44,11 @@ jobs:
           echo "$(ls /etc/DDSRem/)" &&
           cd /etc/DDSRem
           echo "当前路径: $(pwd)"
-          jq ".Dockerhub_Username = \"ddsderek\" | .Dockerhub_Password = \"{ secrets.DOCKERHUB_TOKEN }\"" config.json
-
-        run: |
+          jq ".Dockerhub_Username = \"dolphin738\" | .Dockerhub_Password = \"${{ secrets.DOCKERHUB_TOKEN }}\"" config.json  > tmp.json  && 
+          mv tmp.json  config.json
+      - 
+        name: Execute SH
+        run:  |
           cd /home/runner/work/vps/vps/QBEE
           echo "当前路径: $(pwd)"  &&
           echo "$(ls /etc/DDSRem/)" &&
