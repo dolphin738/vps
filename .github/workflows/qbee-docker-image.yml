@@ -39,9 +39,9 @@ jobs:
       - 
         name: Copy files 
         run: |
-          sudo mkdir -p /home/runner/work/vps/vps/QBEE/etc/DDSRem
-          sudo cp -rf /home/runner/work/vps/vps/build_image/config.json  /home/runner/work/vps/vps/QBEE/etc/DDSRem/config.json
-          cat /home/runner/work/vps/vps/QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
+          sudo mkdir -p /home/runner/work/vps/vps/QBEE/etc/DDSRem &&
+          sudo cp -rf /home/runner/work/vps/vps/build_image/config.json  /home/runner/work/vps/vps/QBEE/etc/DDSRem/config.json &&
+          cat /home/runner/work/vps/vps/QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"' &&
           cat /home/runner/work/vps/vps/QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
       -
         name: Execute SH
