@@ -39,10 +39,10 @@ jobs:
       - 
         name: Copy files 
         run: |
-          mkdir -p etc/DDSRem
-          cp -rf ./build_image/qbee/config.json  ./etc/DDSRem/config.json
-          cat /etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
-          cat /etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
+          mkdir -p /QBEE/etc/DDSRem
+          cp -rf ./build_image/qbee/config.json  ./QBEE/etc/DDSRem/config.json
+          cat /QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
+          cat /QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
       -
         name: Execute SH
         run: chmod +x ./QBEE/Build.sh  && ./QBEE/Build.sh
