@@ -47,8 +47,6 @@ jobs:
           echo "$(ls /etc/DDSRem/)" &&
           echo "$(jq -r '.Dockerhub_Username' /etc/DDSRem/config.json)"
           echo "当前路径: $(pwd)"
-        #cd /etc/DDSRem
-          
       - 
         name: Execute SH
         run:  |
