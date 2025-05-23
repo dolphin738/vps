@@ -38,16 +38,16 @@ jobs:
            #${{ runner.os }}-buildx-
       - 
         name: Copy files
-        env:
+       #env:
            #USERNAME: "dolphin738"
-           TOKEN: "{ secrets.DOCKERHUB_TOKEN }"
+           #TOKEN: "{ secrets.DOCKERHUB_TOKEN }"
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  /etc/DDSRem/config.json &&
           echo "$(ls /etc/DDSRem/)" &&
           cd /etc/DDSRem
           echo "当前路径: $(pwd)"
-          jq ".Dockerhub_Username = \"dolphin738\" | .Dockerhub_Password = \"$TOKEN\"" config.json
+          jq ".Dockerhub_Username = \"dolphin738\" | .Dockerhub_Password = \"{ secrets.DOCKERHUB_TOKEN }\"" config.json
       -
         name: Execute SH
         run:  |
