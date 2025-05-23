@@ -1,0 +1,5 @@
+{
+    "Github_Token": "{ secrets.GITHUB_TOKEN }",
+    "Dockerhub_Username": "dolphin738",
+    "Dockerhub_Password": "",
+}
