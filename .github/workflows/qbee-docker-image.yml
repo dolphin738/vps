@@ -51,6 +51,7 @@ jobs:
       -
         name: Execute SH
         run:  |
+          cd /home/runner/work/vps/vps/QBEE
           echo "当前路径: $(pwd)"  &&
           chmod +x Build.sh  &&
           ./Build.sh
