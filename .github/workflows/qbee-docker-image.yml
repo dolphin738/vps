@@ -39,15 +39,15 @@ jobs:
       - 
         name: Copy files
         env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  /etc/DDSRem/config.json &&
           echo "$(ls /etc/DDSRem/)" &&
           cd /etc/DDSRem
           echo "当前路径: $(pwd)"
-          jq ".Dockerhub_Username = \"$DOCKERHUB_USERNAME\" | .Dockerhub_Password = \"$DOCKERHUB_TOKEN\"" config.json
+          jq ".Dockerhub_Username = $USERNAME | .Dockerhub_Password = $TOKEN" config.json
       -
         name: Execute SH
         run:  |
