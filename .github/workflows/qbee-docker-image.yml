@@ -50,7 +50,7 @@ jobs:
         run:  |
           cd /home/runner/work/vps/vps/QBEE
           echo "当前路径: $(pwd)"  &&
-          chmod +x /Build.sh  &&
+          chmod +x ./Build.sh  &&
           ./Build.sh
       #-
         #name: Login to Docker Hub
