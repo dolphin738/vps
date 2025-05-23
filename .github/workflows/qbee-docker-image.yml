@@ -47,8 +47,8 @@ jobs:
           echo "$(ls /etc/DDSRem/)" &&
           cd /etc/DDSRem
           echo "当前路径: $(pwd)"
-          jq --arg username "$USERNAME" --arg token "$TOKEN" \
-             '.Dockerhub_Username = $USERNAME | .Dockerhub_Password = $TOKEN' config.json
+          jq '.Dockerhub_Username = $USERNAME | .Dockerhub_Password = $TOKEN' \
+              config.json  > tmp.json  && mv tmp.json  config.json 
       -
         name: Execute SH
         run:  |
