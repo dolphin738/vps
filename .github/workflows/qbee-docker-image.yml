@@ -46,6 +46,7 @@ jobs:
           sudo cp -rf config.json  /etc/DDSRem/config.json &&
           echo "$(ls /etc/DDSRem/)" &&
           echo "$(jq -r '.Dockerhub_Username' /etc/DDSRem/config.json)"
+          echo "$(jq -r '.Dockerhub_Password' /etc/DDSRem/config.json)"
           echo "当前路径: $(pwd)"
       - 
         name: Execute SH
