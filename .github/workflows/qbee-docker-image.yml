@@ -41,9 +41,8 @@ jobs:
         run: |
           sudo mkdir -p /QBEE/etc/DDSRem
           sudo cp -rf ./build_image/qbee/config.json  /QBEE/etc/DDSRem/config.json
-          cd /home/runner/work/vps/vps/QBEE
-          cat ./etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
-          cat ./etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
+          cat ./QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
+          cat ./QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
       -
         name: Execute SH
         run: cd /home/runner/work/vps/vps/QBEE && chmod +x ./Build.sh  && ./Build.sh
