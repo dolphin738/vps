@@ -32,7 +32,8 @@ jobs:
           cat ./etc/DDSRem/config.json | jq '.Dockerhub_Password = ${{ secrets.DOCKERHUB_TOKEN }}'
       -
         name: Execute SH
-        run: chmod +x ./QBEE/Build.sh  && ./QBEE/Build.sh
+        #run: chmod +x ./QBEE/Build.sh  && ./QBEE/Build.sh
+        run: bash ./QBEE/Build.sh
         #name: Set up QEMU
         #uses: docker/setup-qemu-action@v2
       #-
