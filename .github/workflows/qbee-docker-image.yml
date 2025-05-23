@@ -38,7 +38,7 @@ jobs:
            #${{ runner.os }}-buildx-
       - 
         name: Copy files
-        env:
+        #env:
       #USERNAME: { secrets.DOCKERHUB_USERNAME }
           #TOKEN: { secrets.DOCKERHUB_TOKEN }
         run: | 
