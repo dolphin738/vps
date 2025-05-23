@@ -42,10 +42,10 @@ jobs:
           sudo mkdir -p /home/runner/work/vps/vps/QBEE/etc/DDSRem &&
           sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  /home/runner/work/vps/vps/QBEE/etc/DDSRem/config.json &&
           echo "$(ls /home/runner/work/vps/vps/QBEE/etc/DDSRem/)" &&
-          cd /home/runner/work/vps/vps/QBEE
+          cd /home/runner/work/vps/vps/QBEE/etc/DDSRem/
           echo "当前路径: $(pwd)"
-          jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"' /etc/DDSRem/config.json &&
-          jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"' /etc/DDSRem/config.json
+          jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"' config.json &&
+          jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"' config.json
           
         #sudo cat /etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"' &&
           #sudo cat /etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
