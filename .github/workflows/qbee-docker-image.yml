@@ -39,8 +39,8 @@ jobs:
       - 
         name: Copy files 
         run: |
-          mkdir -p /QBEE/etc/DDSRem
-          cp -rf ./build_image/qbee/config.json  ./QBEE/etc/DDSRem/config.json
+          sudo mkdir -p /QBEE/etc/DDSRem
+          sudo cp -rf ./build_image/qbee/config.json  ./QBEE/etc/DDSRem/config.json
           cat /QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Username = "${{ secrets.DOCKERHUB_USERNAME }}"'
           cat /QBEE/etc/DDSRem/config.json | jq '.Dockerhub_Password = "${{ secrets.DOCKERHUB_TOKEN }}"'
       -
