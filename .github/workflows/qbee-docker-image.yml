@@ -37,15 +37,17 @@ jobs:
           #restore-keys: |
            #${{ runner.os }}-buildx-
       - 
-        name: Copy files 
+        name: Copy files
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  /etc/DDSRem/config.json &&
           echo "$(ls /etc/DDSRem/)" &&
           cd /etc/DDSRem
           echo "当前路径: $(pwd)"
-          jq '.Dockerhub_Username = [${{ secrets.DOCKERHUB_USERNAME }}] | .Dockerhub_Password = [${{ secrets.DOCKERHUB_TOKEN }}]' config.json
-       #cd /home/runner/work/vps/vps/QBEE  
+          jq '.Dockerhub_Username = \"$DOCKERHUB_USERNAME\" | .Dockerhub_Password = \"$DOCKERHUB_TOKEN\"'
       -
         name: Execute SH
         run:  |
