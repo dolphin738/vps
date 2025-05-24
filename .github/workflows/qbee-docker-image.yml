@@ -20,7 +20,7 @@ jobs:
         name: Checkout qbee
         uses: actions/checkout@v4 
         with:
-          repository: dolphin738/qBittorrent-Enhanced-Edition-Docker
+          repository: DDS-Derek/qBittorrent-Enhanced-Edition-Docker
           path: QBEE
       #-        
         #name: Set up QEMU
