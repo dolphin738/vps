@@ -38,13 +38,13 @@ jobs:
            #${{ runner.os }}-buildx-
       - 
         name: Copy files
-        #env:
+        env:
           #username: ${{ secrets.DOCKERHUB_USERNAME }}
-         #password: ${{ secrets.DOCKERHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           cd /home/runner/work/vps/vps/build_image/qbee
-          jq ".Dockerhub_Username = \"{ secrets.DOCKERHUB_USERNAME }\" | .Dockerhub_Password = \"{ secrets.DOCKERHUB_TOKEN }\"" config.json  > 1.json  &&
+          jq ".Dockerhub_Username = \"dolphin738\" | .Dockerhub_Password = \"$password\"" config.json  > 1.json  &&
           mv 1.json  config.json
           sudo cp -rf config.json  /etc/DDSRem/config.json &&
           echo "$(ls /etc/DDSRem/)" &&
