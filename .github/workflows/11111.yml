@@ -1,4 +1,4 @@
-name: builder caddy_image
+name: builder 11111
 
 on:
   workflow_dispatch:
@@ -30,11 +30,11 @@ jobs:
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
-      #- 
-        #name: Get qbee version
-        #id: qbee_version
-        #uses: pozetroninc/github-action-get-latest-release@master
-        #with:
-          #repository: c0re100/qBittorrent-Enhanced-Edition
-      #- 
-        #run: echo "最新版本为 ${{ steps.qbee_version.outputs.release  }}"
+      - 
+        name: Get qbee version
+        id: qbee_version
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: c0re100/qBittorrent-Enhanced-Edition
+      - 
+        run: echo "最新版本为 ${{ steps.qbee_version.outputs.release  }}"
