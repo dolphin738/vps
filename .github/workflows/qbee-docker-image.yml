@@ -47,7 +47,8 @@ jobs:
           sed -i 's/-it//g' Build.sh
           sed -i 's/'"${command1}"'/'"${command2}"'/g' Build.sh
           chmod +x ./Build.sh  &&
-          ./Build.sh
+          echo "$(cat -n Build.sh)"
+        #./Build.sh
       #echo "当前路径: $(pwd)"  &&
       #echo "当前路径: ${HOME}"  &&
       #echo "$(ls /etc/DDSRem/)" &&
