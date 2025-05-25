@@ -11,6 +11,11 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Retrieve secret
+        env:
+          #super_secret: ${{ secrets.SUPERSECRET }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Checkout
         uses: actions/checkout@v4
@@ -38,13 +43,10 @@ jobs:
            #${{ runner.os }}-buildx-
       - 
         name: Copy files
-        env:
-          #username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           cd /home/runner/work/vps/vps/build_image/qbee
-          jq ".Dockerhub_Username = \"dolphin738\" | .Dockerhub_Password = \"dckr_pat_xvmfQxYvRUZxlfknbgLfJLovpIU\"" config.json  > 1.json  &&
+          jq ".Dockerhub_Username = \"$username\" | .Dockerhub_Password = \"$password\"" config.json  > 1.json  &&
           mv 1.json  config.json
           sudo cp -rf config.json  /etc/DDSRem/config.json &&
           echo "$(ls /etc/DDSRem/)" &&
