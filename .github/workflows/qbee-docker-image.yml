@@ -41,7 +41,8 @@ jobs:
           sudo mkdir -p /etc/DDSRem &&
           cd /etc/DDSRem &&
           sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  config.json &&
-          sudo jq ".Dockerhub_Username = \"$username\" | .Dockerhub_Password = \"$password\"" config.json  > config.json
+          sudo jq ".Dockerhub_Username = \"$username\" | .Dockerhub_Password = \"$password\"" config.json  > 1.json &&
+          mv 1.json  config.json &&
           echo "$(ls /etc/DDSRem/)" &&
           echo "$(jq -r '.Dockerhub_Username' /etc/DDSRem/config.json)"
           echo "$(jq -r '.Dockerhub_Password' /etc/DDSRem/config.json)"
