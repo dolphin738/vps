@@ -40,7 +40,7 @@ jobs:
         run: | 
           echo "当前路径: $(pwd)"
           sudo mkdir -p /etc/DDSRem &&
-          sudo cp -rf /build_image/qbee/config.json  /etc/DDSRem/config.json &&
+          sudo cp -rf ./build_image/qbee/config.json  /etc/DDSRem/config.json &&
           cd /etc/DDSRem &&
           sudo jq ".Dockerhub_Username = \"$username\" | .Dockerhub_Password = \"$password\"" config.json  > 1.json &&
           sudo mv 1.json  config.json &&
