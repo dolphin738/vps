@@ -45,7 +45,7 @@ jobs:
           jq '.ARCH = "linux/amd64"' Build.json > 1.json &&
           mv 1.json  Build.json &&
           sed -i 's/-it//g' Build.sh
-          sed -i "s/$command1/$command2/g" Build.sh
+          sed -i 's/'"${command1}"'/'"${command2}"'/g' Build.sh
           chmod +x ./Build.sh  &&
           ./Build.sh
       #echo "当前路径: $(pwd)"  &&
