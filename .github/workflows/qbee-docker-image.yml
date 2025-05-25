@@ -39,7 +39,7 @@ jobs:
         name: Execute SH
         env:
           command1: docker login --password ${Dockerhub_Password} --username ${Dockerhub_Username}
-          command2: ${Dockerhub_Password} | docker login ${Dockerhub_Username} --password-stdin
+          command2: ${Dockerhub_Password} | docker login --username ${Dockerhub_Username} --password-stdin
         run:  |
           cd /home/runner/work/vps/vps/QBEE
           jq '.ARCH = "linux/amd64"' Build.json > 1.json &&
