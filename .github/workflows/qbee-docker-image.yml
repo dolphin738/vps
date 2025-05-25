@@ -39,12 +39,13 @@ jobs:
         name: Execute SH
         env:
           command1: docker login --password ${Dockerhub_Password} --username ${Dockerhub_Username}
-          command2: echo "${Dockerhub_Password}" | docker login --username ${Dockerhub_Username} --password-stdin
+          command2: echo "dckr_pat_Pf9EbkEFTcdiPSY_aObIQJYmaJA" | docker login --username ${Dockerhub_Username} --password-stdin
         run:  |
           cd /home/runner/work/vps/vps/QBEE
           jq '.ARCH = "linux/amd64"' Build.json > 1.json &&
           mv 1.json  Build.json &&
           sed -i 's/-it//g' Build.sh
+          sed -i "s/$command1/$command2/g" Build.sh
           chmod +x ./Build.sh  &&
           ./Build.sh
       #echo "当前路径: $(pwd)"  &&
