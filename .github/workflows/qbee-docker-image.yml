@@ -39,7 +39,8 @@ jobs:
           Github_Token: ${{ secrets.GITHUB_TOKEN }}
         run: | 
           sudo mkdir -p /etc/DDSRem &&
-          sudo jq ".Dockerhub_Username = \"$username\" | .Dockerhub_Password = \"$password\"" config.json  > /etc/DDSRem/config.json &&
+          cd /etc/DDSRem &&
+          jq ".Dockerhub_Username = \"$username\" | .Dockerhub_Password = \"$password\"" config.json  > config.json &&
           echo "$(ls /etc/DDSRem/)" &&
           echo "$(jq -r '.Dockerhub_Username' /etc/DDSRem/config.json)"
           echo "$(jq -r '.Dockerhub_Password' /etc/DDSRem/config.json)"
