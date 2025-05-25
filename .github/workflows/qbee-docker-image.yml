@@ -40,7 +40,7 @@ jobs:
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           cd /etc/DDSRem &&
-          sudo cp -rf /home/runner/work/vps/vps/build_image/qbee/config.json  config.json &&
+          sudo cp -rf ./home/runner/work/vps/vps/build_image/qbee/config.json  config.json &&
           sudo jq ".Dockerhub_Username = \"$username\" | .Dockerhub_Password = \"$password\"" config.json  > 1.json &&
           sudo mv 1.json  config.json &&
           echo "$(ls /etc/DDSRem/)" &&
