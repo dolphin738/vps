@@ -1,4 +1,4 @@
-name: builder qbee_image
+name: builder 1qbee_image
 
 on:
   workflow_dispatch:
