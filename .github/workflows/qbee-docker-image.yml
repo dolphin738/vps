@@ -20,7 +20,7 @@ jobs:
       - 
         name: Copy files
         env:
-          username: dolphin738
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           Github_Token: ${{ secrets.GITHUB_TOKEN }}
         run: | 
