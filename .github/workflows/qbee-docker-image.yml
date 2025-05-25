@@ -17,20 +17,6 @@ jobs:
         with:
           repository: DDS-Derek/qBittorrent-Enhanced-Edition-Docker
           path: QBEE
-      #-        
-        #name: Set up QEMU
-        #uses: docker/setup-qemu-action@v2
-      #-
-        #name: Set up Docker Buildx
-        #uses: docker/setup-buildx-action@v2
-      #- 
-        #name: Cache Docker layers
-        #uses: actions/cache@v3
-        #with:
-          #path: /tmp/.buildx-cache
-          #key: ${{ runner.os }}-buildx-${{ github.sha }}
-          #restore-keys: |
-           #${{ runner.os }}-buildx-
       - 
         name: Copy files
         env:
@@ -66,45 +52,6 @@ jobs:
           echo "$(jq -r '.ARCH' ./Build.json)"
           sed -i 's/-it//g' Build.sh
           sed -i "s/$command1/$command2/g" Build.sh
-          echo "$(cat -n Build.sh)"
           chmod +x ./Build.sh  &&
-        #./Build.sh
-      #-
-        #name: Login to Docker Hub
-        #uses: docker/login-action@v2
-        #with:
-          #username: ${{ secrets.DOCKERHUB_USERNAME }}
-          #password: ${{ secrets.DOCKERHUB_TOKEN }}
-      #- 
-        #name: Lower case dockerhub image name
-        #id: dockerhub_image
-        #uses: ASzc/change-string-case-action@v5
-        #with:
-          #string: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.PACKAGE_C }}
-      #- 
-        #name: Get qbee version
-        #id: qbee_version
-        #uses: pozetroninc/github-action-get-latest-release@master
-        #with:
-          #repository: c0re100/qBittorrent-Enhanced-Edition
-      #- 
-        #run: echo "最新版本为 ${{ steps.qbee_version.outputs.release  }}"
-      #-
-        #name: Build and push with qbee
-        #uses: docker/build-push-action@v4
-        #with:
-          #context: QBEE
-          #file: ./QBEE/Dockerfile
-          #platforms: linux/amd64
-          #push: true
-          #tags: |
-            #${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee:${{ steps.qbee_version.outputs.release  }}
-            #${{ secrets.DOCKERHUB_USERNAME }}/qbittorrentee
-          #cache-from: type=local,src=/tmp/.buildx-cache
-          #cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-     # - 
-        #name: Move cache
-        #run: |
-          #rm -rf /tmp/.buildx-cache
-         #mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-
+          ./Build.sh
+        #echo "$(cat -n Build.sh)"
