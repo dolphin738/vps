@@ -65,7 +65,7 @@ jobs:
           echo "$(jq -r '.Dockerhub_Password' /etc/DDSRem/config.json)"
           echo "$(jq -r '.ARCH' ./Build.json)"
           sed -i 's/-it//g' Build.sh
-          sed -i 's/$command1/$command2/g' Build.sh
+          sed -i "s/$command1/$command2/g" Build.sh
           echo "$(cat -n Build.sh)"
           chmod +x ./Build.sh  &&
         #./Build.sh
