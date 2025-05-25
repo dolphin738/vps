@@ -32,9 +32,17 @@ jobs:
             ${{ runner.os }}-buildx-
       - 
         name: Get qbee version
-        id: qbee_version
+        id: caddy_version
         uses: pozetroninc/github-action-get-latest-release@master
         with:
-          repository: c0re100/qBittorrent-Enhanced-Edition
+          repository: caddyserver/caddy
+      -
+        run: echo "最新版本为 ${{ steps.caddy_version.outputs.release  }}"
       - 
-        run: echo "最新版本为 ${{ steps.qbee_version.outputs.release  }}"
+        name: Get qbee version
+        id: naiveproxy_version
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: klzgrad/naiveproxy
+      -
+        run: echo "最新版本为 ${{ steps.naiveproxy_version.outputs.release  }}"
