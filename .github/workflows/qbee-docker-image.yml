@@ -53,4 +53,5 @@ jobs:
           sed -i 's/-it//g' Build.sh
           sed -i "s/$command1/$command2/g" Build.sh
           chmod +x ./Build.sh  &&
-          echo "$(cat -n Build.sh)"
+          ./Build.sh
+        #echo "$(cat -n Build.sh)"
