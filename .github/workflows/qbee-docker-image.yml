@@ -36,6 +36,7 @@ jobs:
         env:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          Github_Token: ${{ secrets.GITHUB_TOKEN }}
         run: | 
           sudo mkdir -p /etc/DDSRem &&
           cd /home/runner/work/vps/vps/build_image/qbee
